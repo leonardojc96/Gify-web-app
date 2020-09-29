@@ -1,0 +1,20 @@
+.Gif{
+    border: 1px solid #ffff;
+    border-radius: 6px;
+    padding: 30px;
+    margin: 30px;
+    color: #ffff;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    /* min-width: 25%; */
+    justify-content: center;
+    align-items: center;
+}
+.row {
+    width: 100%;
+}
+img{
+    border-radius: 8px;
+    width: 90%;
+}
