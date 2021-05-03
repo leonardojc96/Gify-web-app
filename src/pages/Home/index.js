@@ -25,7 +25,7 @@ export default function Home(){
 
         <div className='row listOfGifs p-3 m-xl-5 m-md-3 m-2'>
             <h3 className='col-12'>Last searched: {decodeURI(localStorage.getItem('lastKeyword'))}</h3>
-            <div className='col-lg-10 col-12'>
+            <div className='col-lg-9 col-12'>
                 <div className='row d-flex justify-content-center '>
                     <ListOfGifs className='' gifs={gifs}/>
                 </div>

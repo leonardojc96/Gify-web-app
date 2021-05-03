@@ -16,7 +16,9 @@ function App() {
       <section className="App-content container-fluid">
         <GifsContextProvider>
         <Link to='/'>
-          Home
+          <h1 className="my-4">
+            Gify app
+          </h1>
         </Link>
         {/* <Link to='/gif/hamburguesas'>
           anvoguesas
