@@ -22,14 +22,20 @@ function App() {
           anvoguesas
         </Link> */}
         <div className='row justify-content-center'>
+          {/* <div className='col-md-8 col-12'>
+            <div className='row'> */}
+
           <Route className=''
             component = {SearchResult}
             path = '/search/:keyword'
             />
+              
           <Route 
             component = {Home}
             path = '/'
             />
+            {/* </div>
+            </div> */}
 
             <Route 
             component = {Detail}

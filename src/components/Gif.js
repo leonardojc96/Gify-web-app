@@ -2,11 +2,21 @@ import React from 'react';
 import './Gif.css'
 import {Link} from 'wouter'
 
-export default function Gif({title, url, id}){
+function Gif({title, url, id, tamaño = {tamaño:'s'}} ){
     return (
-    <Link to={`gif/${id}`} className="Gif col-xl-3 col-md-4 col-11">
-        <h4>{title}</h4>
-        <img loading='lazy' src={url} alt ={title}/>
-    </Link>
-    )
+            tamaño === 's' 
+            ?
+            <Link to={`gif/${id}`}  className="Gif aling-content-center col-xl-3 col-lg-4 col-md-6 col-10">
+            <h4 className='text-white'>{title}</h4>
+            <img loading='lazy' src={url} alt ={title}/>
+            </Link>
+            :
+            <Link to={`gif/${id}`}  className="Gif aling-content-center col-xl-8 col-lg-8 col-12">
+            <h4 className='text-white'>{title}</h4>
+            <img loading='lazy' src={url} alt ={title}/>
+            </Link>
+        
+            )
 }
+
+export default React.memo(Gif)

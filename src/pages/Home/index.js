@@ -1,31 +1,39 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import {Link, useLocation} from 'wouter'
 import ListOfGifs from '../../components/ListOfGifs'
 import { useGifs } from '../../hooks/useGifs'
+import TrendingSearches from '../../components/TrendingSearches'
+import '../../components/ListOfGif.css'
+import SeachForm from '../../components/SearchForm'
 
 export default function Home(){
-    const [keyword, setKeyword] = useState('')
     const [path, pushLocation] = useLocation()
     const {loading, gifs} = useGifs()
 
-    const handleSubmit = evt => {
-        evt.preventDefault()
+    // usecallback, pra guardar la funcion y no la cree de nuevo
+    // al menos que cambien las dependencias
+    const handleSubmit = useCallback (({keyword}) => {
+        // navegar a otra ruta
         pushLocation(`/search/${keyword}`)
-    }
-
-    const handleChange = evt =>{
-        setKeyword(evt.target.value)
-    }
+    }, [pushLocation])
+    
 
     return (<>
-    {loading ? <h1>loading</h1>:<>
+    {loading ? <h1>loading...🔅</h1>:<>
     
-        <form onSubmit={handleSubmit} className='form-group col-12 d-flex aling-item-center justify-content-center'>
-        <input className='form-control p-4 col-4 ' placeholder='search a gift here...' onChange={handleChange} type='text' value={keyword} />
-        <button className='btn btn-info'>Buscar</button>
-        </form>
-        <h3 className='col-12'>Last searched: {localStorage.getItem('lastKeyword')}</h3>
-        <ListOfGifs className='col-4 d-flex justify-content-center' gifs={gifs}/>
+        <SeachForm onSubmit={handleSubmit}/>
+
+        <div className='row listOfGifs p-3 m-xl-5 m-md-3 m-2'>
+            <h3 className='col-12'>Last searched: {decodeURI(localStorage.getItem('lastKeyword'))}</h3>
+            <div className='col-lg-10 col-12'>
+                <div className='row d-flex justify-content-center '>
+                    <ListOfGifs className='' gifs={gifs}/>
+                </div>
+            </div>
+            <div className='Tendencias col-lg-2 col-12'>
+                <TrendingSearches />
+            </div>
+        </div>
     </>}
         
     </>)

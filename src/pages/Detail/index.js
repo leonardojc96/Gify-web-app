@@ -15,7 +15,7 @@ export default function Detail({params}){
         )
     return(
         <>
-        <Gif className='col-12' {...gif} />
+        <Gif className='col-12' {...gif} tamaño='m' />
         </>
         )
 // return(<h3>gifs {params.id}</h3>)
